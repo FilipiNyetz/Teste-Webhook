@@ -17,16 +17,16 @@ function generateIdempotencyKey() {
 export async function POST(req: Request) {
     try {
         const body = {
-            transaction_amount: 0.01,
+            transaction_amount: 0.03,
             description: "Pagamento via PIX teste",
             payment_method_id: "pix",
             payer: {
-                email: "ana@gmail.com",
-                first_name: "Ana Júlia",
-                last_name: "Borges",
+                email: "filipi@gmail.com",
+                first_name: "",
+                last_name: "Stein",
                 identification: {
                     type: "CPF",
-                    number: "95153756653"
+                    number: "02954349107"
                 }
             },
             notification_url: 'https://teste-webhook-tau.vercel.app/api/mercadopago/webhook',
