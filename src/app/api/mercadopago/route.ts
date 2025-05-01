@@ -21,14 +21,15 @@ export async function POST(req: Request) {
             description: "Pagamento via PIX teste",
             payment_method_id: "pix",
             payer: {
-                email: "filipi@gmail.com",
-                first_name: "Filipi",
-                last_name: "Romao",
+                email: "ana@gmail.com",
+                first_name: "Ana Júlia",
+                last_name: "Borges",
                 identification: {
                     type: "CPF",
-                    number: "02954349107"
+                    number: "95153756653"
                 }
             },
+            notification_url: 'https://teste-webhook-tau.vercel.app/api/mercadopago/webhook',
         };
 
         const requestOptions = {
