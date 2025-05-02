@@ -17,12 +17,12 @@ function generateIdempotencyKey() {
 export async function POST(req: Request) {
     try {
         const body = {
-            transaction_amount: 0.03,
+            transaction_amount: 0.02,
             description: "Pagamento via PIX teste",
             payment_method_id: "pix",
             payer: {
-                email: "filipi@gmail.com",
-                first_name: "",
+                email: "lucas@gmail.com",
+                first_name: "Lucas",
                 last_name: "Stein",
                 identification: {
                     type: "CPF",
