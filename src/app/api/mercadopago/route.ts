@@ -30,6 +30,11 @@ export async function POST(req: Request) {
                 }
             },
             notification_url: 'https://teste-webhook-tau.vercel.app/api/mercadopago/webhook',
+            items: {
+                category_id: 1,
+                description: "Ingresso arraia",
+                id: 45
+            }
         };
 
         const requestOptions = {
