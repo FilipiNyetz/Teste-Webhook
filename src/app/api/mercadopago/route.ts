@@ -13,15 +13,7 @@ function generateIdempotencyKey() {
         + Math.random().toString(36).substring(2, 15);
 }
 
-const now = new Date();
-const sixMinutesLater = new Date(now.getTime() + 6 * 60 * 1000);
-
-const toISOWithTimezone = (date: Date) => {
-    const tzOffset = -3; // Brasil normalmente UTC-3
-    const tz = `${tzOffset >= 0 ? '+' : '-'}${String(Math.abs(tzOffset)).padStart(2, '0')}:00`;
-    return date.toISOString().slice(0, 19) + tz;
-};
-
+const expirationDate = new Date(Date.now() + 30 * 60 * 1000).toISOString();
 
 // 👇 Aqui está a exportação correta para um handler POST
 export async function POST(req: Request) {
@@ -40,9 +32,7 @@ export async function POST(req: Request) {
                 }
             },
             notification_url: 'https://teste-webhook-tau.vercel.app/api/mercadopago/webhook',
-            expires: true,
-            expiration_date_from: toISOWithTimezone(now),            // agora
-            expiration_date_to: toISOWithTimezone(sixMinutesLater),
+            date_of_expiration: expirationDate,
         };
 
 
