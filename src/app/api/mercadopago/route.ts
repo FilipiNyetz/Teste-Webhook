@@ -31,7 +31,7 @@ export async function POST(req: Request) {
                 }
             },
             notification_url: 'https://teste-webhook-tau.vercel.app/api/mercadopago/webhook',
-            date_of_expiration: expirationDate,
+
         };
 
         const requestOptions = {
