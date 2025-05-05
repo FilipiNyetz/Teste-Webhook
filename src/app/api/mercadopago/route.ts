@@ -18,12 +18,12 @@ const expirationDate = new Date(Date.now() + 5 * 60 * 1000).toISOString();
 export async function POST(req: Request) {
     try {
         const body = {
-            transaction_amount: 0.02,
+            transaction_amount: 0.01,
             description: "Pagamento via PIX teste",
             payment_method_id: "pix",
             payer: {
                 email: "filipi@gmail.com",
-                first_name: "Lucas",
+                first_name: "Filipi",
                 last_name: "Stein",
                 identification: {
                     type: "CPF",
@@ -31,7 +31,7 @@ export async function POST(req: Request) {
                 }
             },
             notification_url: 'https://teste-webhook-tau.vercel.app/api/mercadopago/webhook',
-            date_of_expiration: expirationDate
+            date_of_expiration: expirationDate,
         };
 
         const requestOptions = {
