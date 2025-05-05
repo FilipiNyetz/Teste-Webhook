@@ -12,7 +12,7 @@ function generateIdempotencyKey() {
     return 'key-' + Math.random().toString(36).substring(2, 15)
         + Math.random().toString(36).substring(2, 15);
 }
-const expirationDate = new Date(Date.now() + 5 * 60 * 1000).toISOString();
+const expirationDate = new Date(Date.now() + 30 * 60 * 1000).toISOString();
 
 // 👇 Aqui está a exportação correta para um handler POST
 export async function POST(req: Request) {
@@ -30,7 +30,7 @@ export async function POST(req: Request) {
                     number: "02954349107"
                 }
             },
-            date_of_expiration: expirationDate,
+            // date_of_expiration: expirationDate,
             notification_url: 'https://teste-webhook-tau.vercel.app/api/mercadopago/webhook',
 
         };
