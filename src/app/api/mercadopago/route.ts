@@ -30,6 +30,7 @@ export async function POST(req: Request) {
                     number: "02954349107"
                 }
             },
+            date_of_expiration: expirationDate,
             notification_url: 'https://teste-webhook-tau.vercel.app/api/mercadopago/webhook',
 
         };
