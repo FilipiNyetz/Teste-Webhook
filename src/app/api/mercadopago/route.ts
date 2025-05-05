@@ -18,7 +18,7 @@ const expirationDate = new Date(Date.now() + 5 * 60 * 1000).toISOString();
 export async function POST(req: Request) {
     try {
         const body = {
-            transaction_amount: 0.01,
+            transaction_amount: 0.03,
             description: "Pagamento via PIX teste",
             payment_method_id: "pix",
             payer: {
