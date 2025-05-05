@@ -2,7 +2,7 @@
 import { MercadoPagoConfig, Payment } from "mercadopago";
 
 const client = new MercadoPagoConfig({
-    accessToken: "APP_USR-3208387916992746-050210-548e3fe466cf1e7066100e6baa6b715f-2419470826",
+    accessToken: "APP_USR-5889498249727335-050115-3366023be4870f62773c4292de775bf5-2419470826",
     options: { timeout: 5000 },
 });
 
@@ -12,6 +12,7 @@ function generateIdempotencyKey() {
     return 'key-' + Math.random().toString(36).substring(2, 15)
         + Math.random().toString(36).substring(2, 15);
 }
+const expirationDate = new Date(Date.now() + 5 * 60 * 1000).toISOString();
 
 // 👇 Aqui está a exportação correta para um handler POST
 export async function POST(req: Request) {
@@ -21,7 +22,7 @@ export async function POST(req: Request) {
             description: "Pagamento via PIX teste",
             payment_method_id: "pix",
             payer: {
-                email: "lucas@gmail.com",
+                email: "filipi@gmail.com",
                 first_name: "Lucas",
                 last_name: "Stein",
                 identification: {
@@ -30,6 +31,7 @@ export async function POST(req: Request) {
                 }
             },
             notification_url: 'https://teste-webhook-tau.vercel.app/api/mercadopago/webhook',
+            date_of_expiration: expirationDate
         };
 
         const requestOptions = {
