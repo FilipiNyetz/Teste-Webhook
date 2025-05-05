@@ -3,7 +3,7 @@ import { MercadoPagoConfig, Payment } from 'mercadopago';
 
 // Configuração do cliente
 const client = new MercadoPagoConfig({
-    accessToken: 'APP_USR-6304034007371947-050518-11ee5003c0398253323a55c14586b5ee-2419470826',
+    accessToken: 'APP_USR-2547197747259946-050513-62b345d95361fc55d7d05601676675bf-2419470826',
     options: { timeout: 5000 },
 });
 const payment = new Payment(client);
