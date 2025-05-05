@@ -2,7 +2,7 @@
 import { MercadoPagoConfig, Payment } from "mercadopago";
 
 const client = new MercadoPagoConfig({
-    accessToken: "APP_USR-2547197747259946-050513-62b345d95361fc55d7d05601676675bf-2419470826",
+    accessToken: "APP_USR-6304034007371947-050518-11ee5003c0398253323a55c14586b5ee-2419470826",
     options: { timeout: 5000 },
 });
 
@@ -13,7 +13,14 @@ function generateIdempotencyKey() {
         + Math.random().toString(36).substring(2, 15);
 }
 
-const expirationDate = new Date(Date.now() + 30 * 60 * 1000).toISOString();
+const now = new Date();
+const sixMinutesLater = new Date(now.getTime() + 6 * 60 * 1000);
+
+const toISOWithTimezone = (date: Date) => {
+    const tzOffset = -3; // Brasil normalmente UTC-3
+    const tz = `${tzOffset >= 0 ? '+' : '-'}${String(Math.abs(tzOffset)).padStart(2, '0')}:00`;
+    return date.toISOString().slice(0, 19) + tz;
+};
 
 
 // 👇 Aqui está a exportação correta para um handler POST
@@ -32,8 +39,10 @@ export async function POST(req: Request) {
                     number: "02954349107"
                 }
             },
-            date_of_expiration: expirationDate,
             notification_url: 'https://teste-webhook-tau.vercel.app/api/mercadopago/webhook',
+            expires: true,
+            expiration_date_from: toISOWithTimezone(now),            // agora
+            expiration_date_to: toISOWithTimezone(sixMinutesLater),
         };
 
 
