@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
         const email = paymentData.payer?.email;
 
         // Simula uma atualização de banco de dados
-        setInterval(() => {
+        setTimeout(() => {
             status = 'canceled'
         }, 18000000)
         if (status === 'approved') {
