@@ -22,12 +22,17 @@ export async function POST(req: NextRequest) {
 
         // Busca os detalhes do pagamento
         const paymentData = await payment.get({ id: paymentId });
-        const status = paymentData.status;
+        let status = paymentData.status;
         const email = paymentData.payer?.email;
 
         // Simula uma atualização de banco de dados
+        setInterval(() => {
+            status = 'canceled'
+        }, 18000000)
         if (status === 'approved') {
             console.log(`✅ Pagamento aprovado para ${email} (ID: ${paymentId})`);
+        } else if (status === 'canceled') {
+            console.log(`❌ Pagamento cancelado para ${email} (ID: ${paymentId})`);
         } else {
             console.log(`ℹ️ Status do pagamento (${paymentId}): ${status}`);
         }
