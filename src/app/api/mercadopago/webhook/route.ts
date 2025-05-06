@@ -26,13 +26,9 @@ export async function POST(req: NextRequest) {
         const email = paymentData.payer?.email;
 
         // Simula uma atualização de banco de dados
-        setTimeout(() => {
-            status = 'canceled'
-        }, 18000000)
+
         if (status === 'approved') {
             console.log(`✅ Pagamento aprovado para ${email} (ID: ${paymentId})`);
-        } else if (status === 'canceled') {
-            console.log(`❌ Pagamento cancelado para ${email} (ID: ${paymentId})`);
         } else {
             console.log(`ℹ️ Status do pagamento (${paymentId}): ${status}`);
         }

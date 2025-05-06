@@ -13,7 +13,7 @@ function generateIdempotencyKey() {
         + Math.random().toString(36).substring(2, 15);
 }
 
-const expirationDate = new Date(Date.now() + 30 * 60 * 1000).toISOString();
+const expirationDate = new Date(Date.now() + 6 * 60 * 1000).toISOString();
 
 // 👇 Aqui está a exportação correta para um handler POST
 export async function POST(req: Request) {
